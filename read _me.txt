@@ -1,0 +1,46 @@
+#                               WORKING WITH APIs
+
+#Objectives: 1. write self-contained program that generates a visualization based on data it retrieved.
+#            2. Your program will use a web APIs to autoamtically retrieve specific information from
+#               a website- rather than entire pages- and use that info for visualization.
+
+
+#               USING A WEB APIs
+#-- A web API is a part of a website designed to interact with programs.
+#-- The requested data will be returned in an easily processed format, such as JSON or CSV
+#-- Most apps that rely on external data sources, such as apps that integrate with social media site,
+# rely on API calls.
+
+
+#               Git and GitHub
+#-- We'll visualize information from GitHub.
+#-- We'll use GitHub's APIs to requaest information about python projects on the site and then
+# generate an interactive visualization of the relative popularity of these projects using Plotly.
+#-- Projects on GitHub are stored in repositories which contains: code, information on repos, any
+# issues and bugs.
+#-- When users on GitHub like a project, then can 'star' it to show suppport and keep track of the 
+# if fthey want to use it.
+
+#-- In our project we'll write to automatically download information about the most-starred Python 
+# projects on GitHub and we'll visualize that information
+
+
+#               REQUESTING DATA USING AN API calls
+#-- GitHub's API lets you requst a wide variety of information through an API call.
+#-- https://api.github.com/search/repositories?q=language:python&sort=stars
+#-- This call returns the number of python projects currently hosted on GitHub, as well as info about
+# the most popular python repositories.
+#-- api.github.com/     - directs the request to the part of GitHub that reponds to API calls
+#-- seach/repositories  - tells the API to conduct a search through all repositories on GitHub
+#-- ?                   - signals that we are about to enter an argument
+#-- q=                  - lets us begin a specific query
+#-- language=python     - we indicate that we want information only on repositories that have python
+                        - as their primary language.
+#-- &sort=stars         - sorts the project by the number of stars they have been given
+
+NB  The call returned over 8 million repositories and the call wasn't succesful 'incomplete_results'
+    was true
+    the 'items' returned are displayed in a list which contains the most popular Python projects
+
+
+
