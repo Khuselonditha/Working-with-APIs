@@ -77,33 +77,33 @@ dict_keys(['total_count', 'incomplete_results', 'items'])
 
 #                               SUMMARIZING THE FIRST REPOSITORY
 
-import requests
+# import requests
 
-# MAke an API call and store the response
-url = 'https://api.github.com/search/repositories?q=language:python&sort=stars'
-headers = {'Accept': 'application/vnd.github.v3+json'}
-r = requests.get(url, headers=headers)
-print(f"status code: {r.status_code}")
+# # MAke an API call and store the response
+# url = 'https://api.github.com/search/repositories?q=language:python&sort=stars'
+# headers = {'Accept': 'application/vnd.github.v3+json'}
+# r = requests.get(url, headers=headers)
+# print(f"status code: {r.status_code}")
 
-# Store API in a variable
-response_dict = r.json()
-print(f"Total repositories: {response_dict['total_count']}")
+# # Store API in a variable
+# response_dict = r.json()
+# print(f"Total repositories: {response_dict['total_count']}")
 
-# Explore the informtion about the repositories
-repo_dicts = response_dict['items']
-print(f"Repositories returned: {len(repo_dicts)}")
+# # Explore the informtion about the repositories
+# repo_dicts = response_dict['items']
+# print(f"Repositories returned: {len(repo_dicts)}")
 
-# Examine the first repository
-repo_dict = repo_dicts[0]
+# # Examine the first repository
+# repo_dict = repo_dicts[0]
 
-print('\nSelected information about first repository')
-print(f"Name: {repo_dict['name']}")
-print(f"Owner: {repo_dict['owner']['login']}")
-print(f"Stars: {repo_dict['stargazers_count']}")
-print(f"Repository: {repo_dict['html_url']}")
-print(f"Created: {repo_dict['created_at']}")
-print(f"Updated: {repo_dict['updated_at']}")
-print(f"Description: {repo_dict['description']}")
+# print('\nSelected information about first repository')
+# print(f"Name: {repo_dict['name']}")
+# print(f"Owner: {repo_dict['owner']['login']}")
+# print(f"Stars: {repo_dict['stargazers_count']}")
+# print(f"Repository: {repo_dict['html_url']}")
+# print(f"Created: {repo_dict['created_at']}")
+# print(f"Updated: {repo_dict['updated_at']}")
+# print(f"Description: {repo_dict['description']}")
 
 """"
 this is our most started repository on Github
@@ -123,3 +123,39 @@ Updated: 2023-01-20T09:08:29Z
 Description: A curated list of awesome Python frameworks, libraries, software and resources
 """
 
+#                               SUMMARIZING TOP REPOSITORIES
+#-- In our visializaition we want include more than one repository, so we need to loop through the 
+# repositories to visiualize the top ones
+
+import requests
+
+# MAke an API Call and store the response
+url = 'https://api.github.com/search/repositories?q=language:python&sort=stars'
+headers = {'Accept': 'application/vnd.github.v3+json'}
+r = requests.get(url, headers=headers)
+print(f'Status code: {r.status_code}')
+
+# Store API in variable
+response_dict = r.json()
+print(f"Repositories returned: {response_dict['total_count']}")
+
+# Explore the information about the repositories
+repo_dicts = response_dict['items']
+print(f"Repositories returned: {len(repo_dicts)}")
+
+# Examine the the repositories repository
+print('\nSelected information about first repository')
+for repo_dict in repo_dicts:
+    print(f"Name: {repo_dict['name']}")
+    print(f"Owner: {repo_dict['owner']['login']}")
+    print(f"Stars: {repo_dict['stargazers_count']}")
+    print(f"Repository: {repo_dict['html_url']}")
+    print(f"Created: {repo_dict['created_at']}")
+    print(f"Updated: {repo_dict['updated_at']}")
+    print(f"Description: {repo_dict['description']}\n")
+
+"""
+#-- We print the introductory message then loop through all the dictionaries in the "repo_dicts".
+#-- Inside the loop we print the name of each project, its owner, how many stars it has, its URL on
+# GitHub, and the projects description. 
+"""
