@@ -14,7 +14,7 @@
 
 #               Git and GitHub
 #-- We'll visualize information from GitHub.
-#-- We'll use GitHub's APIs to requaest information about python projects on the site and then
+#-- We'll use GitHub's APIs to request information about python projects on the site and then
 # generate an interactive visualization of the relative popularity of these projects using Plotly.
 #-- Projects on GitHub are stored in repositories which contains: code, information on repos, any
 # issues and bugs.
